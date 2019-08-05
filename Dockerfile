@@ -70,7 +70,7 @@ RUN mkdir /tmp/opencv && \
     make install && \
     cd && rm -rf /tmp/opencv
 
-RUN apk del ${DEV_DEPS} && \
+RUN apk del ${DEV} && \
     rm -rf /var/cache/apk/*
 
 ENV PKG_CONFIG_PATH /usr/local/lib64/pkgconfig
@@ -85,6 +85,5 @@ RUN cd /go/src/gocv.io/x/gocv && make deps
 RUN cd /go/src/gocv.io/x/gocv && go run ./cmd/version/main.go
 
 RUN mkdir /app
-WORKDIR /app
 
 ENTRYPOINT /bin/sh
